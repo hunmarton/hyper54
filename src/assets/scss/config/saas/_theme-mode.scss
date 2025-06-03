@@ -47,7 +47,7 @@ html[data-menu-color="light"] {
 
 /* Dark Left Sidebar */
 html[data-menu-color="dark"] {
-    --#{$prefix}menu-bg:                                 #{$gray-900};
+    --#{$prefix}menu-bg:                                 #{$sabee-black};
     --#{$prefix}menu-item-color:                       #8391a2;
     --#{$prefix}menu-item-hover-color:                 #bccee4;
     --#{$prefix}menu-item-active-color:                #ffffff;
@@ -66,7 +66,7 @@ html[data-menu-color="brand"] {
 // Dark Mode Left Sidebar
 html[data-bs-theme="dark"][data-menu-color="light"],
 html[data-bs-theme="dark"][data-menu-color="dark"] {
-    --#{$prefix}menu-bg:                               #3a444e;
+    --#{$prefix}menu-bg: #{$sabee-black};
     --#{$prefix}menu-item-color:                       #8391a2;
     --#{$prefix}menu-item-hover-color:                 #bccee4;
     --#{$prefix}menu-item-active-color:                #ffffff;
@@ -101,12 +101,12 @@ html[data-topbar-color="dark"] {
 
 // Brand Topbar
 html[data-topbar-color="brand"] {
-    --#{$prefix}topbar-bg:                         #{linear-gradient(135deg, #6379c3 0%, #546ee5 60%)};
-    --#{$prefix}topbar-item-color:                 rgba(255, 255, 255, 0.7);
+    --#{$prefix}topbar-bg:                         #{$primary};
+    --#{$prefix}topbar-item-color:                 #{$white};
     --#{$prefix}topbar-item-hover-color:           #ffffff;
-    --#{$prefix}topbar-search-bg:                  rgba(255, 255, 255, 0.1);
-    --#{$prefix}topbar-user-bg:                    rgba(255, 255, 255, 0.1);
-    --#{$prefix}topbar-user-border:                rgba(255, 255, 255, 0.15);
+    --#{$prefix}topbar-search-bg:                  #{$blue-600};
+    --#{$prefix}topbar-user-bg:                    transparent;
+    --#{$prefix}topbar-user-border:                transparent;
 }
 
 // Dark Mode Topbar
@@ -118,4 +118,12 @@ html[data-bs-theme="dark"][data-topbar-color="dark"] {
     --#{$prefix}topbar-search-bg:           #464f5b;
     --#{$prefix}topbar-user-bg:             #3c4655;
     --#{$prefix}topbar-user-border:         #414d5d;
+}
+
+
+.card[data-color] ul > li {
+    text-align: center !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    white-space: nowrap;
 }

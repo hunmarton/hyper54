@@ -26,48 +26,7 @@ const paths = {
     baseDistAssets: "dist/assets/", // build assets directory
 };
 
-const demoPaths = {
-    Saas: "saas",
-    Modern: "modern",
-    Creative: "creative",
-};
-
-var demo = "";
-var demoPath = "";
-
-const input = async function (done) {
-    // Check if running in CI/CD environment or with env variable
-    if (process.env.CI || process.env.DEMO_VERSION) {
-        demo = process.env.DEMO_VERSION || "Saas"; // Default to Saas if not specified
-        demoPath = demoPaths[demo];
-        console.log(`Building ${demo} version (${demoPath}) automatically.`);
-        done();
-        return;
-    }
-
-    let message =
-        "--------------------------------------------------------------\n";
-    message += "Hyper - v5.4.2\n";
-    message += "Which demo version would you like to run?\n";
-    message +=
-        "----------------------------------------------------------------\n";
-    const res = await inquirer.prompt({
-        type: "list",
-        name: "demo",
-        message,
-        default: "Saas",
-        choices: [
-            "Saas",
-            "Modern",
-            "Creative",
-        ],
-        pageSize: "7",
-    });
-    demo = res.demo;
-    demoPath = demoPaths[demo];
-    done();
-};
-
+var demoPath = "saas";
 
 const clean = function (done) {
     del.sync(paths.baseDist, done());
@@ -283,7 +242,6 @@ exports.clean = series(
 
 // Production Tasks
 exports.default = series(
-    input,
     html,
     vendor,
     parallel(data, fonts, images, javascript, scss, icons),
@@ -293,7 +251,6 @@ exports.default = series(
 
 // Build Tasks
 exports.build = series(
-    input,
     clean,
     html,
     vendor,

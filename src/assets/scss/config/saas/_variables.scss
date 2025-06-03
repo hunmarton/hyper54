@@ -36,16 +36,27 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue:       #2c8ef8;
-$indigo:     #727cf5;
-$purple:     #6b5eae;
-$pink:       #ff679b;
-$red:        #fa5c7c;
-$orange:     #fd7e14;
-$yellow:     #ffc35a;
-$green:      #0acf97;
-$teal:       #02a8b5;
-$cyan:       #39afd1;
+//$blue:       #2c8ef8;
+//$indigo:     #727cf5;
+//$purple:     #6b5eae;
+//$pink:       #ff679b;
+//$red:        #fa5c7c;
+//$orange:     #fd7e14;
+//$yellow:     #ffc35a;
+//$green:      #0acf97;
+//$teal:       #02a8b5;
+//$cyan:       #39afd1;
+
+$blue:       #008EFF;
+$indigo:     #727BFF;
+$purple:     #A866FF;
+$pink:       #FF69BE;
+$red:        #FF737C;
+$orange:     #FF9A4E;
+$yellow:     #FFD10D;
+$green:      #00CE5A;
+$teal:       #00C8BB;
+$cyan:       #86CBFF;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -297,8 +308,10 @@ $cyans: (
 );
 // fusv-enable
 
+$sabee-black:    #1c242a;
+
 // scss-docs-start theme-color-variables
-$primary:       $indigo;
+$primary:       $blue;
 $secondary:     $gray-700;
 $success:       $green;
 $info:          $cyan;
@@ -603,7 +616,7 @@ $aspect-ratios: (
 
 // scss-docs-start font-variables
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Nunito', sans-serif;
+$font-family-sans-serif: 'ProximaNova', sans-serif;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 // stylelint-enable value-keyword-case
 $font-family-base:            var(--#{$prefix}font-sans-serif);
@@ -1775,3 +1788,47 @@ $kbd-bg:                            var(--#{$prefix}body-color);
 $nested-kbd-font-weight:            null; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null;
+
+
+
+
+$colorList: (
+        "blues":       $blues,
+        "indigos":     $indigos,
+        "purples":     $purples,
+        "pinks":       $pinks,
+        "reds":        $reds,
+        "oranges":     $oranges,
+        "yellows":     $yellows,
+        "greens":      $greens,
+        "teals":       $teals,
+        "cyans":       $cyans
+);
+
+:root{
+
+    /* Color palettes */
+    @each $colorsName, $colors in $colorList {
+
+        @each $colorName, $colorValue in $colors {
+            --color-#{$colorName}: #{$colorValue};
+        }
+    }
+
+    /* theme colors */
+    @each $colorName, $colorValue in $theme-colors {
+        --color-theme-#{$colorName}: #{$colorValue};
+    }
+    ///* dark theme colors */
+    //@each $colorName, $colorValue in $dark-theme-colors {
+    //    --color-theme-dark-#{$colorName}: #{$colorValue};
+    //}
+    /* grays */
+    @each $colorName, $colorValue in $grays {
+        --color-gray-#{$colorName}: #{$colorValue};
+    }
+    ///* dark grays */
+    //@each $colorName, $colorValue in $dark-grays {
+    //    --color-gray-dark-#{$colorName}: #{$colorValue};
+    //}
+}
