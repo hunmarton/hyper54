@@ -10,10 +10,15 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    # Add permissions here
+    permissions:
+      contents: write
+    
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false # Important for the deploy action
 
       - name: Setup Node.js 🔧
         uses: actions/setup-node@v3
@@ -27,10 +32,13 @@ jobs:
       - name: Build project 🏗️
         run: yarn build
         env:
-          CI: false
+          CI: true
+          DEMO_VERSION: Saas
 
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/saas # Default to the Saas version (can be changed)
+          folder: dist/saas
           branch: gh-pages
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
