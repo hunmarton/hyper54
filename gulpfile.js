@@ -36,6 +36,15 @@ var demo = "";
 var demoPath = "";
 
 const input = async function (done) {
+    // Check if running in CI/CD environment or with env variable
+    if (process.env.CI || process.env.DEMO_VERSION) {
+        demo = process.env.DEMO_VERSION || "Saas"; // Default to Saas if not specified
+        demoPath = demoPaths[demo];
+        console.log(`Building ${demo} version (${demoPath}) automatically.`);
+        done();
+        return;
+    }
+
     let message =
         "--------------------------------------------------------------\n";
     message += "Hyper - v5.4.2\n";

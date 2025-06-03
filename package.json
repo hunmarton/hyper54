@@ -6,7 +6,10 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "gulp",
-        "build": "gulp build"
+        "build": "gulp build",
+        "build:saas": "DEMO_VERSION=Saas gulp build",
+        "build:modern": "DEMO_VERSION=Modern gulp build",
+        "build:creative": "DEMO_VERSION=Creative gulp build"
     },
     "author": "coderthemes",
     "repository": {
